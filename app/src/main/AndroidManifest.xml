@@ -22,6 +22,9 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".StockGraph"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen" />
+
         <service
             android:name=".sync.QuoteIntentService"
             android:exported="false" />
