@@ -135,6 +135,10 @@ class StockAdapter extends RecyclerView.Adapter<StockAdapter.StockViewHolder> {
             clickHandler.onClick(cursor.getString(symbolColumn));
 
             Intent intent = new Intent(context, StockGraph.class);
+            intent.putExtra("position" , adapterPosition);
+            intent.putExtra("high"  , (cursor.getFloat(Contract.Quote.POSITION_PRICE)));
+            intent.putExtra("history"  , (cursor.getFloat(Contract.Quote.POSITION_HISTORY)));
+
             context.startActivity(intent);
 
 

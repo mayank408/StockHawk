@@ -1,5 +1,7 @@
 package com.udacity.stockhawk;
 
+import android.content.Intent;
+import android.database.Cursor;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -18,6 +20,8 @@ import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 import com.github.mikephil.charting.listener.ChartTouchListener;
 import com.github.mikephil.charting.listener.OnChartGestureListener;
 import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
+import com.udacity.stockhawk.data.Contract;
+
 import java.util.ArrayList;
 
 /**
@@ -30,6 +34,7 @@ public class StockGraph extends AppCompatActivity implements
 
 
     private LineChart mChart;
+    private Cursor cursor;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -42,6 +47,13 @@ public class StockGraph extends AppCompatActivity implements
 
         super.onCreate(savedInstanceState);
 
+
+        Intent intent = getIntent();
+        int positon = intent.getIntExtra("position" ,1 );
+        int positionprize = intent.getIntExtra("high" ,1);
+        int positionhistory = intent.getIntExtra("history" , 1);
+
+        Log.d("TAG", "onCreate: " + positon );
 
         mChart = (LineChart) findViewById(R.id.chart);
         mChart.setOnChartGestureListener(this);
